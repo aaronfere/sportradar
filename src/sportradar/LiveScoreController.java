@@ -1,13 +1,24 @@
 package sportradar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LiveScoreController {
 
-	List<Match> matches;
+	private List<Match> matches;
+	
+	public List<Match> getMatches() {
+		return matches;
+	}
+	
+	public LiveScoreController() {
+		super();
+		this.matches = new ArrayList<Match>();
+	}
 
 	public void startMatch(String home, String away) {
 		Match match = new Match(home, away);
+		match.setId(matches.size()+1);
 		matches.add(match);
 	}
 
@@ -34,7 +45,7 @@ public class LiveScoreController {
 		for (Match match : matches) {
 			summary += match.toString() + "\n";
 		}
-		summary = summary.substring(0, summary.length()-2);
+		summary = summary.substring(0, summary.length()-1);
 		return summary;
 	}
 	

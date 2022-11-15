@@ -2,13 +2,15 @@ package sportradar;
 
 public class Match {
 	
+	private int id;
 	private String home;
 	private String away;
 	private int score_Home;
 	private int score_Away;
 	
-	public Match(String home, String away, int score_Home, int score_Away) {
+	public Match(int id, String home, String away, int score_Home, int score_Away) {
 		super();
+		this.id = id;
 		this.home = home;
 		this.away = away;
 		this.score_Home = score_Home;
@@ -21,6 +23,14 @@ public class Match {
 		this.away = away;
 		this.score_Home = 0;
 		this.score_Away = 0;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getHome() {
