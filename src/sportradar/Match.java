@@ -1,18 +1,26 @@
 package sportradar;
 
-public class Team {
+public class Match {
 	
 	private String home;
 	private String away;
 	private int score_Home;
 	private int score_Away;
 	
-	public Team(String home, String away, int score_Home, int score_Away) {
+	public Match(String home, String away, int score_Home, int score_Away) {
 		super();
 		this.home = home;
 		this.away = away;
 		this.score_Home = score_Home;
 		this.score_Away = score_Away;
+	}
+	
+	public Match(String home, String away) {
+		super();
+		this.home = home;
+		this.away = away;
+		this.score_Home = 0;
+		this.score_Away = 0;
 	}
 
 	public String getHome() {
@@ -44,6 +52,11 @@ public class Team {
 	}
 
 	public void setScore_Away(int score_Away) {
+		this.score_Away = score_Away;
+	}
+	
+	public void updateMatch(int score_Home, int score_Away) {
+		this.score_Home = score_Home;
 		this.score_Away = score_Away;
 	}
 
