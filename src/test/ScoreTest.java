@@ -23,16 +23,30 @@ class ScoreTest {
 	}
 
 	@Test
-	void testFinishMatch() {
+	void testFinishMatchByTeam() {
 		controller.startMatch("Morocco", "Croatia");
 		controller.finishMatchByTeam("Morocco");
 		assertEquals(0, controller.getMatches().size());
 	}
+	
+	@Test
+	void testFinishMatchByIndex() {
+		controller.startMatch("Morocco", "Croatia");
+		controller.finishMatchByIndex(0);
+		assertEquals(0, controller.getMatches().size());
+	}
+	
+	@Test
+	void testUpdateMatchByTeam() {
+		controller.startMatch("Morocco", "Croatia");
+		controller.updateMatchByTeam("Morocco", 0, 1);
+		assertEquals(1, controller.getMatches().get(0).getScore_Away());
+	}
 
 	@Test
-	void testUpdateMatch() {
+	void testUpdateMatchByIndex() {
 		controller.startMatch("Morocco", "Croatia");
-		controller.updateMatch(0, 0, 1);
+		controller.updateMatchByIndex(0, 0, 1);
 		assertEquals(1, controller.getMatches().get(0).getScore_Away());
 	}
 
@@ -43,9 +57,9 @@ class ScoreTest {
 		controller.startMatch("Belgium", "Canada");
 		controller.startMatch("Costa Rica", "Spain");
 		// Updating results in bulk instead of goal by goal
-		controller.updateMatch(0, 5, 1);
-		controller.updateMatch(1, 7, 0);
-		controller.updateMatch(2, 2, 4);
+		controller.updateMatchByIndex(0, 5, 1);
+		controller.updateMatchByIndex(1, 7, 0);
+		controller.updateMatchByIndex(2, 2, 4);
 		String summary = controller.getSummary();
 		assertEquals(result, summary);
 	}
