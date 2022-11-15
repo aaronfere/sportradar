@@ -62,6 +62,6 @@ public class Match {
 
 	@Override
 	public String toString() {
-		return home + " " + score_Home + " - " + score_Away + " " + away;
+		return home + " " + score_Home + " - " + away + " " + score_Away;
 	}
 }

@@ -27,4 +27,15 @@ public class LiveScoreController {
 	public void updateMatch(int index, int score_Home, int score_Away) {
 		matches.get(index).updateMatch(score_Home, score_Away);
 	}
+	
+	public String getSummary() {
+		String summary = "";
+		matches.sort(new MatchComparator());
+		for (Match match : matches) {
+			summary += match.toString() + "\n";
+		}
+		summary = summary.substring(0, summary.length()-2);
+		return summary;
+	}
+	
 }
